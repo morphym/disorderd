@@ -12,7 +12,7 @@ disorderd = "6DuNTwcRS1qdR1Y5TsfAkcXqYZWTPiUBQjDNAqyuYxUE"
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "localnet"
+cluster = "https://devnet.helius-rpc.com/?api-key=38552357-5a07-4ffd-bf70-f8505e3aa592"
 wallet = "~/.config/solana/id.json"
 
 [scripts]

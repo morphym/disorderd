@@ -466,6 +466,8 @@ name = "disorderd"
 version = "0.1.0"
 dependencies = [
  "anchor-lang",
+ "borsh 1.6.0",
+ "zk_disorder",
 ]
 
 [[package]]
@@ -509,6 +511,12 @@ name = "five8_core"
 version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2551bf44bc5f776c15044b9b94153a00198be06743e262afaaa61f11ac7523a5"
+
+[[package]]
+name = "fract"
+version = "1.2.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d4ea1c69cdf75ad711b06791c8d548147005b18651e60370392d811df8a0fe00"
 
 [[package]]
 name = "generic-array"
@@ -1564,6 +1572,15 @@ name = "zeroize"
 version = "1.8.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b97154e67e32c85465826e8bcc1c59429aaaf107c1e4a9e53c8d8ccd5eff88d0"
+
+[[package]]
+name = "zk_disorder"
+version = "0.1.0"
+dependencies = [
+ "borsh 1.6.0",
+ "fract",
+ "serde",
+]
 
 [[package]]
 name = "zmij"
