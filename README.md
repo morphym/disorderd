@@ -35,18 +35,19 @@ ZK-Disorder:
 | **Cryptographic Primitive** | Hyperchaotic Lattice                           | Elliptic Curve Pairings | Elliptic Curve Pairings | Merkle Trees + FRI     |
 
  Solana Devnet, Encryption (`EncryptSim`): 3,316 CU consumed. [Explorer](https://explorer.solana.com/tx/2mmQsU9JtY4UV95sj8JFmtauWqNfEd43L21CqLoazgXXcxmQGmsqqFNn9tCWnv8mbLbnDd5mVys8VGLBRJKR4frP?cluster=devnet#ix-1)
+ 
+ <br/>
+ 
+ 
  Solana Devnet, Proof Verification (`VerifyProof`): 239,234 CU consumed. [Explorer](https://explorer.solana.com/tx/4cAFKBLee4MxMUGLCzp4w2sSXse5x2foQy98Rb87u6LiZt9fwG1A1fhKsgZy145UZxNefHguQUN2w7LrZVmXZ5AC?cluster=devnet#ix-2)
 
 
 **Verification of Claims**
 
-This is txcs of zk-disorder encryption on the solana devnet chain, 
 
-[explorer](https://explorer.solana.com/tx/33DiA22gWLjrYqQZRhsRf9vTopbkBUY3qxVP6ZZC1YfokURdcD93Gk8cG4sTPCQxz6jY86DhCErgmcschAcv2b8G?cluster=devnet)
+All performance and security assertions are reproducible.
 
-All performance and security assertions herein are reproducible.
-
-To verify performance; security on the chain 
+To verify performance or deploy this anchir project;
 
 update program address, set your local cluster.
 
