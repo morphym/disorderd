@@ -1,9 +1,7 @@
 use anchor_lang::prelude::*;
 use zk_disorder::{FractCipher, ZKProof}; // The compiled crate
 
-use ::borsh::from_slice;
-
-
+use :borsh::from_slice;
 
 declare_id!("EobLVFgiqRPhvpV2jmNAxV17bjmaFXkEC7BSWNAAiob7");
 
@@ -16,8 +14,7 @@ pub mod disorderd {
     // Can be called via CPI by other programs to gate-keep actions.
     pub fn verify_proof(_ctx: Context<Access>, proof_data: Vec<u8>) -> Result<()> {
         // A. Deserialize (Borsh)
-        let proof: ZKProof = from_slice(&proof_data)
-            .map_err(|_| ErrorCode::InvalidData)?;
+        let proof: ZKProof = from_slice(&proof_data).map_err(|_| ErrorCode::InvalidData)?;
 
         // B. Verify (Calls the library)
         let is_valid = proof.verify();
@@ -49,6 +46,19 @@ pub mod disorderd {
         msg!("Nyxanic: Disorder Encrypted Output :: {:?}", ciphertext);
         Ok(ciphertext)
     }
+
+    pub fn decrypt_sim(
+        _ctx: Context<Access>,
+        key: [u64; 2],
+        iv: [u64; 2],
+        ciphertext: [u64; 2],
+    ) -> Result<[u64; 2]> {
+        let mut cipher = FractCipher::new(key, iv);
+        let plaintext = cipher.decrypt(ciphertext);
+
+        msg!("Disorder: Decrypted Output :: {:?}", plaintext);
+        Ok(plaintext)
+    }
 }
 
 // --- Contexts & Errors ---
@@ -63,4 +73,3 @@ pub enum ErrorCode {
     #[msg("Nyxanic: Hyperchaotic trace verification failed, ZK-Disorder proof is invalid.")]
     ChaosVerificationFailed,
 }
-

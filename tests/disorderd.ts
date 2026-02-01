@@ -10,11 +10,10 @@ describe("disorderd", () => {
 
   const program = anchor.workspace.Disorderd as Program<Disorderd>;
 
-  it("my eye hurts", async () => {
-    console.log("--- Test 1: Simulation ---");
+  it("Executes On-Chain Encryption", async () => {
+    console.log("--- Test 1: Encryption Simulation ---");
 
-    // FIX: Define variables inside the test scope
-    const key = [new BN(0xDEADBEEF), new BN(0xCAFEBABE)];
+    const key = [new BN(0xdeadbeef), new BN(0xcafebabe)];
     const iv = [new BN(0x11112222), new BN(0x33334444)];
     const plaintext = [new BN(100), new BN(200)];
 
@@ -26,13 +25,12 @@ describe("disorderd", () => {
     console.log("Encryption Sig:", tx);
   });
 
-  it("Verifies ", async () => {
-    console.log("--- Test 2: ZK Verification ---");
+  it("VerifiesTrace On-Chain", async () => {
+    console.log("--- Test 2: Verification ---");
 
     const proofPath = "proof.bin";
-    
     if (!fs.existsSync(proofPath)) {
-      console.log("kipping: proof.bin not found. Run Rust generator first.");
+      console.log("Skipping: proof.bin not found. Run Rust generator first.");
       return;
     }
 
@@ -41,12 +39,56 @@ describe("disorderd", () => {
     const tx = await program.methods
       .verifyProof(proofBuffer)
       .accounts({})
-      // FIX: Request more Compute Units (Standard for ZK/Heavy compute)
       .preInstructions([
-        anchor.web3.ComputeBudgetProgram.setComputeUnitLimit({ units: 1400000 })
+        anchor.web3.ComputeBudgetProgram.setComputeUnitLimit({
+          units: 1400000,
+        }),
       ])
       .rpc();
 
-    console.log("roof Verified! Signature:", tx);
+    console.log("ZK-disorder Proof Verified! Signature:", tx);
+  });
+
+  it("Symmetric Round-Trip: Encrypt -> Decrypt", async () => {
+    console.log("--- Test 3: Round-Trip ---");
+
+    const key = [new BN(0xdeadbeef), new BN(0xcafebabe)];
+    const iv = [new BN(0x11112222), new BN(0x33334444)];
+    const originalPlaintext = [new BN(1337), new BN(42)];
+
+    // 1. Encrypt via View (Simulates and extracts return value directly)
+    const ciphertext = await program.methods
+      .encryptSim(key, iv, originalPlaintext)
+      .view();
+
+    // Check if ciphertext is an array (it should be [BN, BN])
+    // Note: .view() returns the data directly, not wrapped in an object
+    const cipherArr = ciphertext as [BN, BN];
+    console.log(
+      "Captured Ciphertext:",
+      cipherArr.map((c) => c.toString())
+    );
+
+    // 2. Decrypt via View using the captured ciphertext
+    const recoveredPlaintext = await program.methods
+      .decryptSim(key, iv, cipherArr)
+      .view();
+
+    const recoveredArr = recoveredPlaintext as [BN, BN];
+    console.log(
+      "Recovered Plaintext:",
+      recoveredArr.map((p) => p.toString())
+    );
+
+    // 3. Validation
+    const isMatch =
+      recoveredArr[0].eq(originalPlaintext[0]) &&
+      recoveredArr[1].eq(originalPlaintext[1]);
+
+    if (isMatch) {
+      console.log("Success: Hyperchaotic Round-Trip matches perfectly.");
+    } else {
+      throw new Error(" Failure: Plaintext mismatch in chaos reconstruction.");
+    }
   });
 });
