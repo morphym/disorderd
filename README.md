@@ -58,7 +58,9 @@ anchor deploy # deploy to the chain, cost 1.39 SOL (prefer devnet for testing)
 anchor test --skip-deploy # it needs proof.bin, a demo proof is already present at root
 ```
 
-exmple: ```bash
+exmple: on the solana devnet
+
+```
 $ anchor test --skip-deploy
 disorderd
 --- Test 1: Encryption Simulation ---
@@ -77,8 +79,8 @@ Success: Hyperchaotic Round-Trip matches perfectly.
 3 passing (4s)
 
 Done in 4.91s.
-```
 
+```
 There are many way to generate proof, also to verify,
 
 better integration depend on your case, we used a file here to avoid a heavy code to transfer proof
