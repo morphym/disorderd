@@ -23,17 +23,19 @@ https://pawit.co/whitepapes/zk-disorder.pdf
 **Attested Performance Metrics**
 
 ZK-Disorder:
+| Property                    | zK-Disorder                                    | Groth16                 | PLONK                   | STARKs                 |
+| --------------------------- | ---------------------------------------------- | ----------------------- | ----------------------- | ---------------------- |
+| **Encryption Cost**         | **3,316 CU** (Verified)                    | N/A                     | N/A                     | N/A                    |
+| **Verification Cost**       | **239,234 CU** (Verified)                  | ~50,000 CU              | ~25,000 CU              | >200,000 CU            |
+| **Order of Magnitude**      | **10³ (Enc) / 10⁵ (Ver)**                      | 10⁴ CU                  | 10⁴ CU                  | 10⁵ CU                 |
+| **Trusted Setup**           | No                                             | Yes (per-circuit)       | Yes (universal)         | No                     |
+| **Proof Size**              | 968 bytes                                      | 192 bytes               | ~400 bytes              | ~50 KB                 |
+| **Quantum Resistance**      | **Practical (NISQ)**                           | None (EC broken)        | None (EC broken)        | Hash-based             |
+| **Native Solana**           | **Yes (u64 ALU)**                              | No (bn256 imports)      | No (FFT/pairings)       | No (heavy hash chains) |
+| **Cryptographic Primitive** | Hyperchaotic Lattice                           | Elliptic Curve Pairings | Elliptic Curve Pairings | Merkle Trees + FRI     |
 
-| Property                    | zK-Disorder  | Groth16                 | PLONK                   | STARKs                 |
-| --------------------------- | -------------------- | ----------------------- | ----------------------- | ---------------------- |
-| **Verification Cost**       | **3,658 CU**         | ~50,000 CU              | ~25,000 CU              | >200,000 CU            |
-| **Order of Magnitude**      | **10³ CU**           | 10⁴ CU                  | 10⁴ CU                  | 10⁵ CU                 |
-| **Trusted Setup**           | No                   | Yes (per-circuit)       | Yes (universal)         | No                     |
-| **Proof Size**              | 968 bytes            | 192 bytes               | ~400 bytes              | ~50 KB                 |
-| **Quantum Resistance**      | **Practical (NISQ)** | None (EC broken)        | None (EC broken)        | Hash-based             |
-| **Native Solana**           | **Yes (u64 ALU)**    | No (bn256 imports)      | No (FFT/pairings)       | No (heavy hash chains) |
-| **Cryptographic Primitive** | Hyperchaotic Lattice | Elliptic Curve Pairings | Elliptic Curve Pairings | Merkle Trees + FRI     |
-
+[^1]: Solana Devnet, Encryption (`EncryptSim`): 3,316 CU consumed. [Explorer](https://explorer.solana.com/tx/2mmQsU9JtY4UV95sj8JFmtauWqNfEd43L21CqLoazgXXcxmQGmsqqFNn9tCWnv8mbLbnDd5mVys8VGLBRJKR4frP?cluster=devnet#ix-1)
+[^2]: Solana Devnet, Proof Verification (`VerifyProof`): 239,234 CU consumed. [Explorer](https://explorer.solana.com/tx/4cAFKBLee4MxMUGLCzp4w2sSXse5x2foQy98Rb87u6LiZt9fwG1A1fhKsgZy145UZxNefHguQUN2w7LrZVmXZ5AC?cluster=devnet#ix-2)
 
 
 **Verification of Claims**
@@ -82,6 +84,8 @@ Done in 4.91s.
 
 ```
 There are many way to generate proof, also to verify,
+
+Read docs on proof generation & verification here:
 
 better integration depend on your case, we used a file here to avoid a heavy code to transfer proof
 or encoding proof inside `tests/disorderd.ts`.
