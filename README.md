@@ -34,8 +34,8 @@ ZK-Disorder:
 | **Native Solana**           | **Yes (u64 ALU)**                              | No (bn256 imports)      | No (FFT/pairings)       | No (heavy hash chains) |
 | **Cryptographic Primitive** | Hyperchaotic Lattice                           | Elliptic Curve Pairings | Elliptic Curve Pairings | Merkle Trees + FRI     |
 
-[^1]: Solana Devnet, Encryption (`EncryptSim`): 3,316 CU consumed. [Explorer](https://explorer.solana.com/tx/2mmQsU9JtY4UV95sj8JFmtauWqNfEd43L21CqLoazgXXcxmQGmsqqFNn9tCWnv8mbLbnDd5mVys8VGLBRJKR4frP?cluster=devnet#ix-1)
-[^2]: Solana Devnet, Proof Verification (`VerifyProof`): 239,234 CU consumed. [Explorer](https://explorer.solana.com/tx/4cAFKBLee4MxMUGLCzp4w2sSXse5x2foQy98Rb87u6LiZt9fwG1A1fhKsgZy145UZxNefHguQUN2w7LrZVmXZ5AC?cluster=devnet#ix-2)
+ Solana Devnet, Encryption (`EncryptSim`): 3,316 CU consumed. [Explorer](https://explorer.solana.com/tx/2mmQsU9JtY4UV95sj8JFmtauWqNfEd43L21CqLoazgXXcxmQGmsqqFNn9tCWnv8mbLbnDd5mVys8VGLBRJKR4frP?cluster=devnet#ix-1)
+ Solana Devnet, Proof Verification (`VerifyProof`): 239,234 CU consumed. [Explorer](https://explorer.solana.com/tx/4cAFKBLee4MxMUGLCzp4w2sSXse5x2foQy98Rb87u6LiZt9fwG1A1fhKsgZy145UZxNefHguQUN2w7LrZVmXZ5AC?cluster=devnet#ix-2)
 
 
 **Verification of Claims**
