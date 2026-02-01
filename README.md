@@ -42,19 +42,19 @@ ZK-Disorder:
  Solana Devnet, Proof Verification (`VerifyProof`): 239,234 CU consumed. [Explorer](https://explorer.solana.com/tx/4cAFKBLee4MxMUGLCzp4w2sSXse5x2foQy98Rb87u6LiZt9fwG1A1fhKsgZy145UZxNefHguQUN2w7LrZVmXZ5AC?cluster=devnet#ix-2)
 
 
-**Verification of Claims**
+**Setup & Verification**
 
 
 All performance and security assertions are reproducible.
 
-To verify performance or deploy this anchir project;
+To verify or deploy this anchor program
 
 update program address, set your local cluster.
 
 ```
 anchor keys sync ## sync keys first
 
-anchor build # build nyxanic.
+anchor build # build
 
 anchor deploy # deploy to the chain, cost 1.39 SOL (prefer devnet for testing)
 
@@ -87,6 +87,8 @@ Done in 4.91s.
 There are many way to generate proof, also to verify,
 
 Read docs on proof generation & verification here:
+
+[proof-doc](https://github.com/morphym/disorderd/blob/main/docs/proof-doc.md)
 
 better integration depend on your case, we used a file here to avoid a heavy code to transfer proof
 or encoding proof inside `tests/disorderd.ts`.
