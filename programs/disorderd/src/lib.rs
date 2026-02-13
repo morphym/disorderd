@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 use zk_disorder::{FractCipher, ZKProof}; // The compiled crate
 
-use :borsh::from_slice;
+use ::borsh::from_slice;
 
 declare_id!("EobLVFgiqRPhvpV2jmNAxV17bjmaFXkEC7BSWNAAiob7");
 
